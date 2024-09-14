@@ -22,10 +22,6 @@ RUN apt-get update \
       pkg-config \
   && apt-get clean
 
-RUN mkdir /build_dir
-
-RUN pip3 install conan
-
 RUN useradd -m goran \
   && yes password | passwd goran
 

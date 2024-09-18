@@ -1,0 +1,7 @@
+[requires]
+folly/2024.08.12.00
+[generators]
+CMakeDeps
+CMakeToolchain
+[layout]
+cmake_layout

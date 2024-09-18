@@ -16,6 +16,7 @@ RUN apt-get update \
       mc \
       python3 \
       python3-pip \
+      python3-venv \
       git \
       make \
       binutils-dev \
@@ -28,3 +29,9 @@ RUN useradd -m goran \
 RUN usermod -a -G sudo goran
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN usermod -s /bin/bash goran
+
+RUN python3 -m venv /pyvenv
+RUN /pyvenv/bin/./pip3 install conan
+
+WORKDIR .devcontainer
+RUN /pyvenv/bin/./conan install . -of /conan_generators --build=missing

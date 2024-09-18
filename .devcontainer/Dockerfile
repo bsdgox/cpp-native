@@ -38,4 +38,6 @@ RUN mkdir /conan_generators
 
 COPY conanfile.txt /conan
 WORKDIR /conan
+
+RUN /pyvenv/bin/./conan profile detect
 RUN /pyvenv/bin/./conan install . -of /conan_generators --build=missing

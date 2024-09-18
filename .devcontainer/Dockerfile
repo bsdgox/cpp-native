@@ -33,6 +33,9 @@ RUN usermod -s /bin/bash goran
 RUN python3 -m venv /pyvenv
 RUN /pyvenv/bin/./pip3 install conan
 
-COPY conanfile.txt /build
-WORKDIR /build
+RUN mkdir /conan
+RUN mkdir /conan_generators
+
+COPY conanfile.txt /conan
+WORKDIR /conan
 RUN /pyvenv/bin/./conan install . -of /conan_generators --build=missing
